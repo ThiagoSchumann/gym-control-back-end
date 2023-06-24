@@ -87,6 +87,4 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-api/db/gym-control-dev.sqlite
-
-api/db/
+.vscode/
