@@ -1,21 +1,29 @@
-// src\models\product.js
+// src\models\cashflow.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-
-const Product = sequelize.define('Product', {
+const Cashflow = sequelize.define('Cashflow', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
-  name: {
+  amount: {
+    type: DataTypes.FLOAT,
+    allowNull: false,
+  },
+  description: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  price: {
+  type: {
+    type: DataTypes.ENUM('income', 'expense'),
+    allowNull: false,
+  },
+  balance: {
     type: DataTypes.FLOAT,
     allowNull: false,
+    defaultValue: 0,
   },
   createdAt: {
     type: DataTypes.DATE,
@@ -27,4 +35,4 @@ const Product = sequelize.define('Product', {
   },
 });
 
-module.exports = Product;
+module.exports = Cashflow;
