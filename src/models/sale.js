@@ -26,4 +26,4 @@ const Sale = sequelize.define('Sale', {
   },
 });
 
-module.exports= Sale;
+module.exports = Sale;
