@@ -1,6 +1,8 @@
 // src\app.js
 const express = require('express');
 const app = express();
+const cors = require('cors');
+
 const userRoutes = require('./routes/user_routes');
 const gymRoutes = require('./routes/gym_routes');
 const professionalRoutes = require('./routes/professional_routes');
@@ -12,12 +14,13 @@ const saleRoutes = require('./routes/sale_routes');
 const productRoutes = require('./routes/product_routes');
 const sequelize = require('./config/database');
 
-const { Sale, Product, SaleProduct } = require('./models/associations'); 
+const { Sale, Product, SaleProduct } = require('./models/associations');
 
-
+const PORT = 3001;
 
 // Configuração do body parser para trabalhar com JSON
 app.use(express.json());
+app.use(cors());
 
 // Configuração das rotas
 app.use(userRoutes);
@@ -45,11 +48,10 @@ async function synchronizeModels() {
 synchronizeModels()
   .then(() => {
     // Iniciar o servidor após a sincronização
-    const port = 3000;
-    app.listen(port, () => {
+    app.listen(PORT, () => {
       console.log('Server running on port 3000');
     });
   })
   .catch((error) => {
-    console.error('Failed to sync models:', error);
-  });
+    console.error('Failed to sync models:', error);
+  });
