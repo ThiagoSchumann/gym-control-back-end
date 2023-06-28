@@ -32,9 +32,13 @@ app.use(productRoutes);
 
 // Sincronizar os modelos com o banco de dados
 async function synchronizeModels() {
-  await Sale.sync();
-  await Product.sync();
-  await SaleProduct.sync();
+  // await Sale.sync();
+  // await Product.sync();
+  // await SaleProduct.sync();
+  // await SaleProduct.sync();
+  // await SaleProduct.sync();
+  // await SaleProduct.sync();
+  await sequelize.sync({ force: true });
   // sync other models...
 }
 
